@@ -1,0 +1,5 @@
+export enum products {
+    SET_PRODUCTS='SET_PRODUCTS',
+    FETCH_PRODUCTS='FETCH_PRODUCTS',
+    ERROR_DATA='ERROR_DATA'
+}
