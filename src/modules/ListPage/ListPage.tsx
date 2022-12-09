@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/redux-store";
 import { ImageWrapper, ListPageProduct, NavBar, PostProduct, ProductsWrapper } from "../../styles";
-import { fetchProducts } from "./store/actions";
+import { fetchProducts, setCart } from "./store/actions";
 
 interface IProps {
   id: string;
@@ -21,22 +21,23 @@ interface IProps {
 const Product = ({
   title,
   id,
-  category,
-  description,
   image,
   price,
-  rating,
 }: IProps) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
 
   return (
-    <PostProduct onClick={()=>navigate(`/product/${id}`)}>
+    <PostProduct >
       <ImageWrapper>
         <img src={image} />
       </ImageWrapper>
       <div>{title}</div>
-      <button className="btn">Buy</button>
-      {/* <button className="btn">Show more</button> */}
+      <div className="buttons">
+      <button className="btn-buy" onClick={()=> dispatch(setCart({title,id,image,price}))} >Buy</button>
+      <button className="btn" onClick={()=>navigate(`/product/${id}`)}>Show more</button>
+      </div>
     </PostProduct>
   );
 };

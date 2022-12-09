@@ -31,8 +31,8 @@ const ProductInfo: FC = () => {
           <div>Title - {product?.title}</div>
           <div>Category - { product?.category}</div>
           <div>Descriprion - {product?.description}</div>
-          <div>rating - {product?.rating?.rate} voted {product?.rating?.count} </div>
-          <button>Buy</button>
+          <div>Rating - {product?.rating?.rate}/5 voted ({product?.rating?.count}) </div>
+          <div className="price-and-button">{product.price} $ <button  className="btn-buy">Buy</button></div>
         </div>
       </ProductInfoS>
     </ProductPage>
