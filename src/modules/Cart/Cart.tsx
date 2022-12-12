@@ -2,7 +2,7 @@ import { CartWrapper } from "./CartStyless";
 import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteCartItem } from "../ListPage/store/actions";
-
+import { ShopButton } from "../../styles";
 interface ICartList {
   title: string;
   image: string;

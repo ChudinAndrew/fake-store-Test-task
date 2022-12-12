@@ -2,7 +2,14 @@ import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/redux-store";
-import { ImageWrapper, ListPageProduct, NavBar, PostProduct, ProductsWrapper } from "../../styles";
+import {
+  ImageWrapper,
+  ListPageProduct,
+  NavBar,
+  PostProduct,
+  ProductsWrapper,
+} from "../../styles";
+import Preloader from "../Preloader/preloader";
 import { fetchProducts, setCart } from "./store/actions";
 
 interface IProps {
@@ -18,25 +25,26 @@ interface IProps {
   };
 }
 
-const Product = ({
-  title,
-  id,
-  image,
-  price,
-}: IProps) => {
+const Product = ({ title, id, image, price }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
 
   return (
-    <PostProduct >
+    <PostProduct>
       <ImageWrapper>
         <img src={image} />
       </ImageWrapper>
       <div>{title}</div>
       <div className="buttons">
-      <button className="btn-buy" onClick={()=> dispatch(setCart({title,id,image,price}))} >Buy</button>
-      <button className="btn" onClick={()=>navigate(`/product/${id}`)}>Show more</button>
+        <button
+          className="btn-buy"
+          onClick={() => dispatch(setCart({ title, id, image, price }))}
+        >
+          Buy
+        </button>
+        <button className="btn" onClick={() => navigate(`/product/${id}`)}>
+          Show more
+        </button>
       </div>
     </PostProduct>
   );
@@ -47,8 +55,9 @@ const ListPage: FC = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  const { products } = useSelector(({ product }: RootState) => ({
+  const { products, isFetching } = useSelector(({ product }: RootState) => ({
     products: product.products,
+    isFetching: product.isFetching,
   }));
 
   const product = products.map((prod: any) => (
@@ -57,18 +66,14 @@ const ListPage: FC = () => {
 
   return (
     <ListPageProduct>
-      <NavBar>
-        {/* <div>Filter by category</div>
-        <select>
-          <option value="">All</option>
-          <option value="">Jawelery</option>
-          <option value="">Clothes</option>
-        </select> */}
-      </NavBar>
-      <div>
-      <ProductsWrapper>{product}</ProductsWrapper>
-      </div>
-      
+      <NavBar></NavBar>
+      {!isFetching ? (
+        <div>
+          <ProductsWrapper>{product}</ProductsWrapper>
+        </div>
+      ) : (
+        <Preloader />
+      )}
     </ListPageProduct>
   );
 };

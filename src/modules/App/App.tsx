@@ -5,6 +5,7 @@ import "./App.css";
 import { AppWrpapper } from "../../styles";
 import ListPage from "../ListPage/ListPage";
 import ProductInfo from "../ProductInfo/ProductInfo";
+import Order from "../Order/Order";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/home/*" element={<HomePage />} />
         <Route path="/pagelist/*" element={<ListPage />} />
         <Route path="/product/:id" element={<ProductInfo />} />
+        <Route path="/order/" element={<Order />} />
       </Routes>
     </AppWrpapper>
   );

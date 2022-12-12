@@ -1,4 +1,3 @@
-import Cart from "../../Cart/Cart";
 import { products } from "./actionTypes";
 
 const initialState = {
