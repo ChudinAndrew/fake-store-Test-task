@@ -19,13 +19,14 @@ interface IProps {
   description: string;
   category: string;
   image: string;
+  count:number;
   rating: {
     rate: number;
     count: number;
   };
 }
 
-const Product = ({ title, id, image, price }: IProps) => {
+const Product = ({ title, id, image, price, count=1 }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ const Product = ({ title, id, image, price }: IProps) => {
       <div className="buttons">
         <button
           className="btn-buy"
-          onClick={() => dispatch(setCart({ title, id, image, price }))}
+          onClick={() => dispatch(setCart({ title, id, image, price, count }))}
         >
           Buy
         </button>
@@ -61,7 +62,7 @@ const ListPage: FC = () => {
   }));
 
   const product = products.map((prod: any) => (
-    <Product key={prod.id} {...prod} />
+    <Product key={prod.id} {...prod}  />
   ));
 
   return (

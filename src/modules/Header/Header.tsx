@@ -32,7 +32,11 @@ const Header: FC = () => {
   // });
 
   const cartList = cart.map((el: any) => <Cart key={el.id} {...el} />);
-  console.log(cartList);
+
+  function orderClick() {
+    setCartOpen((cartOpen = !cartOpen));
+    navigate(`/order/`);
+  }
 
   return (
     <HeaderWrapper>
@@ -46,6 +50,8 @@ const Header: FC = () => {
         </NavLink>
       </HeaderBar>
       <ShopButton>
+        <NavLink to='login' className="link">Log in</NavLink>
+        <NavLink to='signup' className="link">Sign up</NavLink>
         <FaShoppingCart
           onClick={() => setCartOpen((cartOpen = !cartOpen))}
           className={`shop-btn ${cartOpen && "active"}`}
@@ -60,7 +66,7 @@ const Header: FC = () => {
                 <div>Total price </div>
                 <div>{totalPrice.toFixed(2)} $</div>
               </div>
-              <OrderButton onClick={()=>navigate(`/order/`)}>Order</OrderButton>
+              <OrderButton onClick={orderClick}>Order</OrderButton>
             </div>
           )}
         </div>

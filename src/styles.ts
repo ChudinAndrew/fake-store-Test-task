@@ -43,6 +43,14 @@ export const ShopButton = styled.div`
   background-color: grey;
   display: flex;
   justify-content: end;
+  .link {
+    padding-right: 8px;
+    padding-left: 8px;
+    color: white;
+  }
+  .active {
+    color: black;
+  }
   .shop-btn {
     cursor: pointer;
     transition: color, transform 500ms ease;
