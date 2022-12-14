@@ -7,6 +7,7 @@ import ListPage from "../ListPage/ListPage";
 import ProductInfo from "../ProductInfo/ProductInfo";
 import Order from "../Order/Order";
 import SignUp from "../SignUp/SignUp";
+import LogIn from "../LogIn/LogIn";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/product/:id" element={<ProductInfo />} />
         <Route path="/order/" element={<Order />} />
         <Route path="/signup/" element={<SignUp />} />
+        <Route path="/login/" element={<LogIn />} />
       </Routes>
     </AppWrpapper>
   );
