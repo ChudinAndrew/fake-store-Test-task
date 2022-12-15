@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/redux-store";
 import { FormikWrapper, OrderItems, OrderWrapper } from "./orderStyles";
+import { object, string, ref } from "yup";
 
 interface ICartList {
   title: string;
@@ -10,6 +11,18 @@ interface ICartList {
   price: number;
   id: number;
 }
+
+const OrderValidation = object().shape({
+  email: string()
+    .required("Valid email required")
+    .email("Valid email required"),
+  number: string()
+    .min(8, "Password must be min 8 symbols!")
+    .required("Password must be min 8 symbols!"),
+  adress: string()
+    .required("Please confirm your password")
+    .oneOf([ref("password")], "Passwords do not match"),
+});
 
 const CartOrder = ({ image, price }: ICartList) => {
   let [count, setCount] = useState(1);
@@ -48,10 +61,15 @@ const Order: FC = () => {
       firstName: "",
       lastName: "",
       email: "",
+      number: "",
+      adress: "",
+      orderStatus: "Order accepted",
     },
+
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
+    validationSchema: { OrderValidation },
   });
   return (
     <OrderWrapper>
@@ -82,6 +100,22 @@ const Order: FC = () => {
           type="email"
           onChange={formik.handleChange}
           value={formik.values.email}
+        />
+        <label htmlFor="number">Phone number</label>
+        <input
+          id="number"
+          name="number"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.number}
+        />
+        <label htmlFor="adress">Address</label>
+        <input
+          id="adress"
+          name="adress"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.adress}
         />
 
         <button type="submit">Order</button>

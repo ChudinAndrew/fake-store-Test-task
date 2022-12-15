@@ -8,16 +8,18 @@ import ProductInfo from "../ProductInfo/ProductInfo";
 import Order from "../Order/Order";
 import SignUp from "../SignUp/SignUp";
 import LogIn from "../LogIn/LogIn";
+import OrderC from "../Order/Order copy";
 
 function App() {
   return (
     <AppWrpapper>
       <Header />
       <Routes>
+        <Route path="/" element={<ListPage />} />
         <Route path="/home/*" element={<HomePage />} />
         <Route path="/pagelist/*" element={<ListPage />} />
         <Route path="/product/:id" element={<ProductInfo />} />
-        <Route path="/order/" element={<Order />} />
+        <Route path="/order/" element={<OrderC />} />
         <Route path="/signup/" element={<SignUp />} />
         <Route path="/login/" element={<LogIn />} />
       </Routes>
@@ -26,4 +28,3 @@ function App() {
 }
 
 export default App;
- 

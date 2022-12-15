@@ -6,7 +6,9 @@ const LoginValidation = object().shape({
   email: string()
     .required("Valid email required")
     .email("Valid email required"),
-  password: string().min(8, "Required").required("Required"),
+  password: string()
+    .min(8, "Password must be min 8 symbols!")
+    .required("Password must be min 8 symbols!"),
 });
 
 const Input = ({ name, label, ...props }: any) => {

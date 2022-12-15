@@ -50,15 +50,24 @@ const Header: FC = () => {
         </NavLink>
       </HeaderBar>
       <ShopButton>
-        <NavLink to='login' className="link">Log in</NavLink>
-        <NavLink to='signup' className="link">Sign up</NavLink>
+        <NavLink to="login" className="link">
+          Log in
+        </NavLink>
+        <NavLink to="signup" className="link">
+          Sign up
+        </NavLink>
         <FaShoppingCart
           onClick={() => setCartOpen((cartOpen = !cartOpen))}
-          className={`shop-btn ${cartOpen && "active"}`}
+          className={`shop-btn ${cartOpen && "active"}
+          `}
         />
       </ShopButton>
       {cartOpen && (
-        <div className="cart-shop">
+        <div
+          tabIndex={1}
+          onBlur={() => setCartOpen(false)}
+          className="cart-shop"
+        >
           <div>{cartList}</div>
           {cart?.length > 0 && (
             <div>

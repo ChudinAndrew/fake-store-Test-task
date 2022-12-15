@@ -8,9 +8,9 @@ export const OrderWrapper = styled.div`
   -webkit-box-shadow: 3px 6px 12px -1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 3px 6px 12px -1px rgba(0, 0, 0, 0.75);
   box-shadow: 3px 6px 12px -1px rgba(0, 0, 0, 0.75);
-  .total-price{
-    display:flex;
-    justify-content:space-between;
+  .total-price {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 
@@ -27,20 +27,20 @@ export const OrderItems = styled.div`
   .item-price {
   }
   .order-image {
-    justify-items:right;
+    justify-items: right;
     max-width: 50px;
     width: 100%;
     /* margin: 5px 100px 5px auto; */
   }
-  .count-button{
-    >button{
-      border:0;
-      font-size:20px;
-      background-color:white;
-      width:50px;
-      height:50px;
-      :hover{
-        background-color:#ebf3f7;
+  .count-button {
+    > button {
+      border: 0;
+      font-size: 20px;
+      background-color: white;
+      width: 50px;
+      height: 50px;
+      :hover {
+        background-color: #ebf3f7;
       }
     }
   }
@@ -58,29 +58,33 @@ export const FormikWrapper = styled.form`
   width: 300px;
   display: flex;
   flex-direction: column;
-  margin:auto 0;
+  margin: auto 0;
   /* align-items: center; */
 
-  > input {    
+  > input {
     width: 300px;
     height: 35px;
     border: 1px solid #ccc;
     background-color: #fff;
   }
-  >label{
-    margin:10px 0;
-  }
-  >button{
-    align-self:flex-end;
+  > label {
     margin: 10px 0;
-    background-color:lightgreen;
+  }
+  > button {
+    align-self: flex-end;
+    margin: 10px 0;
+    background-color: lightgreen;
     border: 1px solid gray;
-    border-radius:5px;
-    transition:color, transform 500ms ease ;
-    
+    border-radius: 5px;
+    transition: color, transform 500ms ease;
   }
-  >button:hover{
-    background-color:greenyellow;
-    transform:scale(1.2)
+  > button:hover {
+    background-color: greenyellow;
+    transform: scale(1.2);
   }
+`;
+export const ErrorMess = styled.p`
+  color: red;
+  font-size: 12px;
+  line-height: 16px;
 `;
