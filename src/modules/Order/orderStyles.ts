@@ -24,6 +24,16 @@ export const OrderItems = styled.div`
   border-bottom: 1px solid grey;
   margin-bottom: 15px;
   /* &:la */
+  .trash {
+    cursor: pointer;
+    color: grey;
+    padding-right: 10px;
+    transition: color, transform 500ms ease;
+  }
+  .trash:hover{
+    color:red;
+    transform: scale(1.1);
+}
   .item-price {
   }
   .order-image {
@@ -59,7 +69,12 @@ export const FormikWrapper = styled.form`
   display: flex;
   flex-direction: column;
   margin: auto 0;
+  /* color:red; */
   /* align-items: center; */
+  > p {
+    margin: 0;
+    color: red;
+  }
 
   > input {
     width: 300px;

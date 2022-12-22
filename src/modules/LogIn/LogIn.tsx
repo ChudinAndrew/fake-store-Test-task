@@ -1,4 +1,5 @@
 import { Formik, Form, useField, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
 import { object, string } from "yup";
 import { InputWrapper, SignUpWrapper } from "../SignUp/SignUpStyles";
 
@@ -33,8 +34,10 @@ const Input = ({ name, label, ...props }: any) => {
 };
 
 function LogIn() {
+  const navigate = useNavigate();
   const handleSubmit = (values: any) => {
-    console.log(values);
+    alert("Registration was successful");
+    navigate("/pagelist");
   };
 
   return (

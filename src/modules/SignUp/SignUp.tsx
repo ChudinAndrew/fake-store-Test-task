@@ -1,4 +1,5 @@
 import { Formik, Form, useField, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
 import { object, string, ref } from "yup";
 import { InputWrapper, SignUpWrapper } from "./SignUpStyles";
 
@@ -7,7 +8,9 @@ const RegisterValidation = object().shape({
   email: string()
     .required("Valid email required")
     .email("Valid email required"),
-  password: string().min(8, "Password must be min 8 symbols!").required("Password must be min 8 symbols!"),
+  password: string()
+    .min(8, "Password must be min 8 symbols!")
+    .required("Password must be min 8 symbols!"),
   confirmPassword: string()
     .required("Please confirm your password")
     .oneOf([ref("password")], "Passwords do not match"),
@@ -17,31 +20,28 @@ const Input = ({ name, label, ...props }: any) => {
   const [field, meta] = useField(name);
   return (
     <InputWrapper>
-      <label
-        className='label'
-        htmlFor={field.name}
-      >
+      <label className="label" htmlFor={field.name}>
         {label}
       </label>
       <input
-        className={`${
-          meta.error && meta.touched ? "border" : "none"
-        } input`}
+        className={`${meta.error && meta.touched ? "border" : "none"} input`}
         {...field}
         {...props}
       />
       <ErrorMessage
         name={field.name}
         component="div"
-        className='error-message'
+        className="error-message"
       />
     </InputWrapper>
   );
 };
 
 function SignUp() {
+  const navigate = useNavigate();
   const handleSubmit = (values: any) => {
-    console.log(values);
+    alert("Registration was successful");
+    navigate("/pagelist");
   };
 
   return (

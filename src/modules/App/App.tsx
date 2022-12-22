@@ -5,10 +5,9 @@ import "./App.css";
 import { AppWrpapper } from "../../styles";
 import ListPage from "../ListPage/ListPage";
 import ProductInfo from "../ProductInfo/ProductInfo";
-import Order from "../Order/Order";
 import SignUp from "../SignUp/SignUp";
 import LogIn from "../LogIn/LogIn";
-import OrderC from "../Order/Order copy";
+import OrderC from "../Order/Order";
 
 function App() {
   return (
