@@ -1,7 +1,6 @@
 import Header from "../Header/Header";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
-import "./App.css";
 import { AppWrpapper } from "../../styles";
 import ListPage from "../ListPage/ListPage";
 import ProductInfo from "../ProductInfo/ProductInfo";
@@ -11,7 +10,7 @@ import OrderC from "../Order/Order";
 
 function App() {
   return (
-    <AppWrpapper>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<ListPage />} />
@@ -22,7 +21,7 @@ function App() {
         <Route path="/signup/" element={<SignUp />} />
         <Route path="/login/" element={<LogIn />} />
       </Routes>
-    </AppWrpapper>
+    </>
   );
 }
 

@@ -1,11 +1,24 @@
 import { FC, useEffect, useState } from "react";
-import { HeaderBar, HeaderWrapper, ShopButton } from "../../styles";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/redux-store";
 import Cart from "../Cart/Cart";
-import { OrderButton } from "./HeaderStyle";
+import {
+  AppBar,
+  Button,
+  ButtonGroup,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import { ShoppingCart } from "@mui/icons-material";
 // import { Route } from 'react-router'
 
 // interface ICartList {
@@ -16,7 +29,6 @@ import { OrderButton } from "./HeaderStyle";
 // }
 const Header: FC = () => {
   let [cartOpen, setCartOpen] = useState(false);
-  // let [cartList, setCartList] = useState<ICartList[]>([]);
 
   const { cart } = useSelector(({ product }: RootState) => ({
     cart: product.cart,
@@ -39,48 +51,97 @@ const Header: FC = () => {
   }
 
   return (
-    <HeaderWrapper>
-      <HeaderBar>
-        <div className="logo">CharChuI</div>
-        <NavLink to="home" className="link">
-          Home page
-        </NavLink>
-        <NavLink to="pagelist" className="link">
-          List page
-        </NavLink>
-      </HeaderBar>
-      <ShopButton>
-        <NavLink to="login" className="link">
-          Log in
-        </NavLink>
-        <NavLink to="signup" className="link">
-          Sign up
-        </NavLink>
-        <FaShoppingCart
-          onClick={() => setCartOpen((cartOpen = !cartOpen))}
-          className={`shop-btn ${cartOpen && "active"}
-          `}
-        />
-      </ShopButton>
-      {cartOpen && (
-        <div
-          tabIndex={1}
-          onBlur={() => setCartOpen(false)}
-          className="cart-shop"
-        >
-          <div>{cartList}</div>
-          {cart?.length > 0 && (
-            <div>
-              <div className="total-price">
-                <div>Total price </div>
-                <div>{totalPrice.toFixed(2)} $</div>
-              </div>
-              <OrderButton onClick={orderClick}>Order</OrderButton>
-            </div>
-          )}
-        </div>
-      )}
-    </HeaderWrapper>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" color="primary">
+          <Toolbar sx={{ display: "flex" }}>
+            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+              CharChuI
+            </Typography>
+            <ButtonGroup variant="text" color="inherit">
+              <Button
+                variant="text"
+                component={NavLink}
+                to="home"
+                color="inherit"
+              >
+                Home page
+              </Button>
+              <Button
+                variant="text"
+                component={NavLink}
+                to="pagelist"
+                color="inherit"
+              >
+                List page
+              </Button>
+
+              <Button
+                variant="text"
+                component={NavLink}
+                to="login"
+                color="inherit"
+              >
+                Log in
+              </Button>
+
+              <Button
+                variant="text"
+                component={NavLink}
+                to="signup"
+                color="inherit"
+              >
+                Sign up
+              </Button>
+            </ButtonGroup>
+            <IconButton color="inherit" onClick={() => setCartOpen(true)}>
+              <ShoppingCart />
+            </IconButton>
+            <Drawer
+              anchor="right"
+              open={cartOpen}
+              onClose={() => setCartOpen(false)}
+            >
+              <List sx={{ width: "400px" }}>
+                <ListItem>
+                  <ListItemIcon>
+                    <ShoppingCart />
+                  </ListItemIcon>
+                  <ListItemText primary="Cart" />
+                </ListItem>
+                <Divider />
+                {!cart.length ? (
+                  <ListItem>Cart empty!</ListItem>
+                ) : (
+                  <>
+                    {cart.map((el: any) => (
+                      <Cart key={el.id} {...el} />
+                    ))}
+                    <Divider />
+                    <ListItem>
+                      <Typography sx={{ fontWeight: 600, flexGrow: 1 }}>
+                        Total price :{" "}
+                        {cart.reduce((acc: any, item: any) => {
+                          return acc + item.price;
+                        }, 0)}{" "}
+                        $
+                      </Typography>
+                      <Button
+                        onClick={orderClick}
+                        variant="outlined"
+                        color="inherit"
+                      >
+                        Order
+                      </Button>
+                    </ListItem>
+                  </>
+                )}
+              </List>
+            </Drawer>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </>
   );
 };
 

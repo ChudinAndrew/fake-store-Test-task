@@ -1,8 +1,8 @@
-import { CartWrapper } from "./CartStyless";
-import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteCartItem } from "../ListPage/store/actions";
-import { ShopButton } from "../../styles";
+import { IconButton, ListItem, Typography } from "@mui/material";
+import { Close } from "@mui/icons-material";
+import { Box } from "@mui/system";
 interface ICartList {
   title: string;
   image: string;
@@ -13,15 +13,19 @@ interface ICartList {
 const Cart = ({ title, image, price, id }: ICartList) => {
   const dispatch = useDispatch();
   return (
-    <CartWrapper>
-      <div>
-        <img className="img" src={image} />
-      </div>
-      <div className="price-trash">
-        <div className="price">{price} $</div>
-        <FaTrash onClick={()=>dispatch(deleteCartItem(id))} className="trash" />
-      </div>
-    </CartWrapper>
+    <ListItem>
+      <ListItem>
+        <Box component="img" src={image} sx={{ height: "50px" }} />
+      </ListItem>
+      <ListItem sx={{ justifyContent:'end'}}>
+        <Typography sx={{ float: "right" }} variant="inherit" component="div">
+          {price} $
+        </Typography>
+      </ListItem>
+      <IconButton onClick={() => dispatch(deleteCartItem(id))}>
+        <Close />
+      </IconButton>
+    </ListItem>
   );
 };
 
