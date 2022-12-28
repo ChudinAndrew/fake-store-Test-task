@@ -1,3 +1,14 @@
+import { Category } from "@mui/icons-material";
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +21,7 @@ import {
   ProductsWrapper,
 } from "../../styles";
 import Preloader from "../Preloader/preloader";
+import { CardWrapper } from "./ListPageStyless";
 import { fetchProducts, setCart } from "./store/actions";
 
 interface IProps {
@@ -19,35 +31,41 @@ interface IProps {
   description: string;
   category: string;
   image: string;
-  count:number;
+  count: number;
   rating: {
     rate: number;
     count: number;
   };
 }
 
-const Product = ({ title, id, image, price, count=1 }: IProps) => {
+const Product = ({ title, id, image, price, count = 1, category }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   return (
-    <PostProduct>
-      <ImageWrapper>
-        <img src={image} />
-      </ImageWrapper>
-      <div>{title}</div>
-      <div className="buttons">
-        <button
-          className="btn-buy"
-          onClick={() => dispatch(setCart({ title, id, image, price, count }))}
-        >
-          Buy
-        </button>
-        <button className="btn" onClick={() => navigate(`/product/${id}`)}>
-          Show more
-        </button>
-      </div>
-    </PostProduct>
+    <Grid item xs={12} md={4}>
+      <PostProduct>
+        <ImageWrapper>
+          <img src={image} />
+        </ImageWrapper>
+        <Typography variant='h5' component='p'>{title}</Typography>
+        <Typography>Price : {price} $</Typography>
+        <ButtonGroup className="buttons" sx={{ alignSelf: "center" }}>
+          <Button
+            className="btn-prod"
+            variant="outlined"
+            onClick={() =>
+              dispatch(setCart({ title, id, image, price, count }))
+            }
+          >
+            Buy
+          </Button>
+          <Button variant="outlined" onClick={() => navigate(`/product/${id}`)}>
+            Show more
+          </Button>
+        </ButtonGroup>
+      </PostProduct>
+    </Grid>
   );
 };
 
@@ -62,20 +80,17 @@ const ListPage: FC = () => {
   }));
 
   const product = products.map((prod: any) => (
-    <Product key={prod.id} {...prod}  />
+    <Product key={prod.id} {...prod} />
   ));
 
   return (
-    <ListPageProduct>
-      <NavBar></NavBar>
+    <Grid container spacing={1}>
       {!isFetching ? (
-        <div>
-          <ProductsWrapper>{product}</ProductsWrapper>
-        </div>
+        <ProductsWrapper>{product}</ProductsWrapper>
       ) : (
         <Preloader />
       )}
-    </ListPageProduct>
+    </Grid>
   );
 };
 

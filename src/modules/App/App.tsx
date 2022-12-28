@@ -1,7 +1,5 @@
 import Header from "../Header/Header";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../HomePage/HomePage";
-import { AppWrpapper } from "../../styles";
 import ListPage from "../ListPage/ListPage";
 import ProductInfo from "../ProductInfo/ProductInfo";
 import SignUp from "../SignUp/SignUp";
@@ -14,7 +12,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<ListPage />} />
-        <Route path="/home/*" element={<HomePage />} />
         <Route path="/pagelist/*" element={<ListPage />} />
         <Route path="/product/:id" element={<ProductInfo />} />
         <Route path="/order/" element={<OrderC />} />

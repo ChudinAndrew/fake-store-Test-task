@@ -5,6 +5,7 @@ import { RootState } from "../../redux/redux-store";
 import Cart from "../Cart/Cart";
 import {
   AppBar,
+  Badge,
   Button,
   ButtonGroup,
   Divider,
@@ -59,14 +60,7 @@ const Header: FC = () => {
               CharChuI
             </Typography>
             <ButtonGroup variant="text" color="inherit">
-              <Button
-                variant="text"
-                component={NavLink}
-                to="home"
-                color="inherit"
-              >
-                Home page
-              </Button>
+
               <Button
                 variant="text"
                 component={NavLink}
@@ -95,7 +89,10 @@ const Header: FC = () => {
               </Button>
             </ButtonGroup>
             <IconButton color="inherit" onClick={() => setCartOpen(true)}>
+              <Badge color='secondary'
+              badgeContent={cart.length}>
               <ShoppingCart />
+              </Badge>
             </IconButton>
             <Drawer
               anchor="right"

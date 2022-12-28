@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -43,7 +44,8 @@ const ProductInfo: FC = () => {
           </div>
           <div className="price-and-button">
             {product.price} ${" "}
-            <button
+            <Button
+            variant="contained"
               onClick={() =>
                 dispatch(
                   setCart({
@@ -54,10 +56,10 @@ const ProductInfo: FC = () => {
                   })
                 )
               }
-              className="btn-buy"
+              // className="btn-buy"
             >
               Buy
-            </button>
+            </Button>
           </div>
         </div>
       </ProductInfoS>

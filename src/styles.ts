@@ -78,25 +78,24 @@ export const HeaderWrapper = styled.div`
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    .total-price{
-      display:flex;
-      justify-content:space-between;
-      padding:8px 65px;
-      padding-bottom:20px;
-      font-size:20px;
-      
+    .total-price {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 65px;
+      padding-bottom: 20px;
+      font-size: 20px;
     }
   }
 `;
 
 export const ProductsWrapper = styled.div`
-  /* width: 1170px; */
+  width: 80%;
   height: 100%;
   /* border: 1px solid grey; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 5px auto;
+  margin: 10px auto;
 `;
 export const ImageWrapper = styled.div`
   > img {
@@ -108,16 +107,16 @@ export const PostProduct = styled.div`
   flex-direction: column;
   justify-content: space-around;
   border: 1px solid lightgray;
-  border-radius: 25px;
-  width: calc(25% - 10px);
+  border-radius: 5px;
+  /* width: calc(25% - 10px); */
   flex: 0 0 calc(25% - 15px);
-  height: 150px;
+  height: 220px;
   text-align: center;
   /* background-color: tomato; */
   margin: 5px;
-  -webkit-box-shadow: 4px 4px 15px -3px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 4px 4px 15px -3px rgba(0, 0, 0, 0.75);
-  box-shadow: 4px 4px 15px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 6px 8px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 6px 8px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 6px 8px -4px rgba(0, 0, 0, 0.75);
 
   .btn {
     background-color: lightgreen;
@@ -135,15 +134,15 @@ export const PostProduct = styled.div`
     box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.75);
     transition: color, transform 500ms ease;
   }
-  .buttons{
-    align-items:flex-end;
+  .buttons {
+    align-items: flex-end;
   }
   .btn:hover {
-        background-color: red;
-        transform: scale(1.2);
-      }
-      .btn-buy {
-        background-color: lightgreen;
+    background-color: red;
+    transform: scale(1.2);
+  }
+  .btn-buy {
+    background-color: lightgreen;
     width: 80px;
     font-size: small;
     align-self: flex-end;
@@ -157,12 +156,11 @@ export const PostProduct = styled.div`
     -moz-box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.75);
     box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.75);
     transition: color, transform 500ms ease;
-        
-      }
-      .btn-buy:hover {
-        background-color: red;
-        transform: scale(1.2);
-      }
+  }
+  .btn-buy:hover {
+    background-color: red;
+    transform: scale(1.2);
+  }
 `;
 export const ListPageProduct = styled.div`
   display: grid;
@@ -217,7 +215,7 @@ export const ProductInfoS = styled.div`
       align-self: flex-end;
 
       .btn-buy {
-        z-index:9999;
+        z-index: 9999;
         background-color: lightgreen;
         width: 50px;
         align-self: flex-end;

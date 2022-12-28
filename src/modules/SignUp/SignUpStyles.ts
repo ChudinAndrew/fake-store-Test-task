@@ -9,7 +9,7 @@ export const SignUpWrapper = styled.div`
   background-color: rgb(243 244 246);
   .form {
     background-color: white;
-    width: 50%;
+    width: 30%;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     border-radius: 4px;
     padding-left: 32px;
@@ -51,7 +51,7 @@ export const InputWrapper = styled.div`
     appearance: none;
     border-width: 1px;
     border-radius: 4px;
-    width: 100%;
+    width: 95%;
     padding: 8px 12px;
     color: grey;
     line-height: 1.25;
